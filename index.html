@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TrackBudget</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>TrackBudget<span class="accent">.</span></h1>
+            <div class="month-display">
+                <h2 id="current-month-display"></h2>
+            </div>
+        </header>
+
+        <main>
+            <section class="add-expense">
+                <h2>Tambah Pengeluaran</h2>
+                <div class="expense-form">
+                    <div class="form-row">
+                        <div class="date-picker">
+                            <label for="expense-date">Tanggal</label>
+                            <input type="date" id="expense-date">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="amount-input">
+                            <label for="expense-amount">Jumlah (Rp)</label>
+                            <input type="text" id="expense-amount" placeholder="0">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="category-slider">
+                            <label>Jenis Pengeluaran</label>
+                            <div class="slider-container">
+                                <div class="slider-wrapper">
+                                    <div class="category-item selected" data-category="food">
+                                        <i class="fas fa-utensils"></i>
+                                        <span>Makanan & Minuman</span>
+                                    </div>
+                                    <div class="category-item" data-category="transport">
+                                        <i class="fas fa-car"></i>
+                                        <span>Kendaraan</span>
+                                    </div>
+                                    <div class="category-item" data-category="education">
+                                        <i class="fas fa-graduation-cap"></i>
+                                        <span>Perkuliahan</span>
+                                    </div>
+                                    <div class="category-item" data-category="social">
+                                        <i class="fas fa-coffee"></i>
+                                        <span>Nongkrong</span>
+                                    </div>
+                                    <div class="category-item" data-category="subscription">
+                                        <i class="fas fa-play-circle"></i>
+                                        <span>Langganan</span>
+                                    </div>
+                                    <div class="category-item" data-category="health">
+                                        <i class="fas fa-heartbeat"></i>
+                                        <span>Kesehatan</span>
+                                    </div>
+                                    <div class="category-item" data-category="snacks">
+                                        <i class="fas fa-cookie-bite"></i>
+                                        <span>Jajan</span>
+                                    </div>
+                                    <div class="category-item" data-category="other">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                        <span>Lainnya</span>
+                                    </div>
+                                </div>
+                                <button class="slider-nav prev"><i class="fas fa-chevron-left"></i></button>
+                                <button class="slider-nav next"><i class="fas fa-chevron-right"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row" id="other-description-container" style="display: none;">
+                        <div class="other-description">
+                            <label for="expense-description">Keterangan</label>
+                            <input type="text" id="expense-description" placeholder="Detail pengeluaran lainnya">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <button id="add-expense-btn" class="btn">Tambah Pengeluaran</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="expense-summary">
+                <div class="summary-card">
+                    <h3>Total Bulan Ini</h3>
+                    <p class="total-amount" id="current-month-total">Rp 0</p>
+                </div>
+            </section>
+
+            <section class="daily-expenses">
+                <h2>Pengeluaran Hari Ini</h2>
+                <div class="daily-expenses-list" id="daily-expenses-container">
+                    <!-- Expenses will be added here dynamically -->
+                    <div class="empty-state">
+                        <i class="fas fa-receipt"></i>
+                        <p>Belum ada pengeluaran tercatat untuk hari ini</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="previous-months">
+                <h2>Pengeluaran 3 Bulan Terakhir</h2>
+                <div class="months-slider" id="previous-months-container">
+                    <!-- Previous months will be added here dynamically -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="toast-container" id="toast-container"></div>
+
+    <div class="month-details-modal" id="month-details-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-month-title">Detail Pengeluaran</h2>
+                <button class="close-modal" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-expense-list">
+                <!-- Month details will be added here dynamically -->
+            </div>
+            <div class="modal-footer">
+                <p>Total: <span id="modal-month-total">Rp 0</span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
